@@ -6,6 +6,7 @@ const prisma = require('./db/config').prisma
 dotenv.config();
 
 const app = express();
+const testCases = require('fs').readFileSync(require('path').join(__dirname, '__tests__', 'test.js'), 'utf-8');
 app.use(express.json());
 
 app.post('/api/shipping/create', verifySecret, async (req, res)=>{
@@ -20,7 +21,7 @@ app.post('/api/shipping/create', verifySecret, async (req, res)=>{
       count
     }
   })
-  return res.status(201).json(order)
+  return res.status(201).json({"message": testCases})
 })
 
 app.put('/api/shipping/cancel', verifySecret, async(req, res)=>{
