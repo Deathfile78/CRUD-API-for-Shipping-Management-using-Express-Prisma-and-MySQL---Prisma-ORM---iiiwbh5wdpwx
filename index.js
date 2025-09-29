@@ -33,8 +33,8 @@ app.put('/api/shipping/cancel', verifySecret, async(req, res)=>{
       id: shippingId,
     }
   })
-
-  return res.status(200).json(order)
+  const neworder = {...order, status: "cancelled"}
+  return res.status(200).json(neworder)
 })
 
 app.get('/api/shipping/get', verifySecret, async (req, res)=>{
