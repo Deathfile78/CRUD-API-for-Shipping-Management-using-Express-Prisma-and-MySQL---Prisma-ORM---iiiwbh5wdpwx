@@ -29,7 +29,7 @@ app.put('/api/shipping/cancel', verifySecret, async(req, res)=>{
   if (!shippingId) {
     return res.status(404).json({"error": "Missing shippingId"})
   }
-  const order = await prisma.shipping.findMany({
+  const order = await prisma.shipping.update({
     where: {
       id: shippingId,
     },
