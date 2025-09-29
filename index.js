@@ -31,9 +31,11 @@ app.put('/api/shipping/cancel', verifySecret, async(req, res)=>{
   const [order] = await prisma.shipping.findMany({
     where: {
       id: shippingId,
+    },
+    data: {
+      status: "cancelled"
     }
   })
-  order.status = 'cancelled'
   return res.status(200).json(order)
 })
 
