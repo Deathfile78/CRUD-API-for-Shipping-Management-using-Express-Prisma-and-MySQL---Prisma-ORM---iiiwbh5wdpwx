@@ -21,7 +21,7 @@ app.post('/api/shipping/create', verifySecret, async (req, res)=>{
       count
     }
   })
-  return res.status(201).json({"message": testCases})
+  return res.status(201).json(order)
 })
 
 app.put('/api/shipping/cancel', verifySecret, async(req, res)=>{
@@ -58,6 +58,7 @@ app.get('/api/shipping/get', verifySecret, async (req, res)=>{
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log(`Test cases: ${testCases}`);
 });
  
 module.exports = app;
